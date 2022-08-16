@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  hostCity : "http://localhost:8086/booking/city"
+  hostCity : "http://localhost:8086/booking/city",
+  hostHotel: "http://localhost:8086/booking/hotel"
 };
 
 /*

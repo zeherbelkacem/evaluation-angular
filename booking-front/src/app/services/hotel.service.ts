@@ -2,12 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { City } from '../models/city';
+import { Hotel } from '../models/hotel';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CityService {
+export class HotelService {
 
    /*First solution
   */
@@ -17,14 +17,17 @@ export class CityService {
    setCityName(CityName: string) {
      this.CityName$.next(CityName);
    }
-
   constructor(private http: HttpClient) { }
 
-  public postCity(city : City): Observable<City>{
-    return this.http.post<City>(environment.hostCity+"/save", city);
+  getHotelByCityName(city: string): Observable<Hotel[]> {
+    return this.http.get<Hotel[]>(
+      environment.hostHotel + '/byCity/' + city
+    );
   }
 
-  public getAllCities(): Observable<City[]>{
-    return this.http.get<City[]>(environment.hostCity+"/all");
+  getAllHotels(): Observable<Hotel[]> {
+    return this.http.get<Hotel[]>(
+      environment.hostHotel + '/all/'
+    );
   }
 }

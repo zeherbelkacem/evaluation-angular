@@ -11,12 +11,16 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CitiesNavBarComponent } from './components/cities-nav-bar/cities-nav-bar.component';
+import { UserHotelsComponent } from './components/user-hotels/user-hotels.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    HomeComponent
+    HomeComponent,
+    CitiesNavBarComponent,
+    UserHotelsComponent
   ],
   imports: [
     BrowserModule,
