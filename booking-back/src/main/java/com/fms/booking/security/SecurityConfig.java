@@ -99,7 +99,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //
 
 
-        http.authorizeHttpRequests().anyRequest().authenticated();
+       // http.authorizeHttpRequests().anyRequest().authenticated();
 
 
         //TODO

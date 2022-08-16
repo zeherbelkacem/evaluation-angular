@@ -1,0 +1,82 @@
+<app-nav-admin></app-nav-admin>
+  <div class="mt-5 container-fluid">
+    <div class="card text-center">
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-6">
+            <h3></h3>
+          </div>
+          <table class="mt-2 table table-striped table-bordered table-dark">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>City</th>
+                <th>Department</th>
+
+                <th>DELETE</th>
+                <th>UPDATE</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let city of listCities">
+                    <td >{{city.id}}</td>
+                    <td >{{city.name}}</td>
+                    <td >{{city.department}}</td>
+                    <!-- <td >{{city.cinema}}</td> -->
+                    
+                    <td>
+                        <a (click)="onDeleteCity(city)"><i
+                                class="fas fa-trash-alt"></i></a>
+                    </td>
+                    <td>
+                        <a (click)="onUpdateCity(city.id)"><i 
+                            class="fas fa-edit" ></i></a>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <nav aria-label="...">
+            <ul class="pagination justify-content-center">
+              <li
+                th:class="${currentPage==0 ? 'page-item disabled' : 'page-item'} "
+              >
+                <a
+                  class="page-link"
+                  th:href="@{/admin(page=${currentPage-1}, size=${size}, keyWord=${keyWord} ) }"
+                  >Previous</a
+                >
+              </li>
+              <li th:each="page,status:${pages}">
+                <a
+                  th:class="${status.index==currentPage?'btn btn-primary':'btn'  }"
+                  th:href="@{ /admin(page=${status.index}, size=${size}, keyWord=${keyWord}) }"
+                  th:text="${status.index }"
+                ></a>
+              </li>
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  th:href="@{ /admin(page=${currentPage+1}, size=${size}, keyWord=${keyWord} )}"
+                  >Next</a
+                >
+              </li>
+              <li class="page-item">
+                <a
+                  class="page-link"
+                  th:href="@{/admin(page=${totalPages-1}, size=${size}, keyWord=${keyWord} )}"
+                  >Last</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="card-footer text-muted">
+          <a class="btn btn-secondary btn-lg" routerLink="/saveCity"
+            >Add new city</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>

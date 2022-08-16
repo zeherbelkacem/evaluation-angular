@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AdminRoutingModule } from './admin/admin-routing.module';
+import { AdminModule } from './admin/admin.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AuthRoutingModule } from './auth/auth-routing.module';
+import { AuthModule } from './auth/auth.module';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { HomeComponent } from './components/home/home.component';
-import { AdminRoutingModule } from './admin/admin-routing.module';
-import { AuthRoutingModule } from './auth/auth-routing.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,12 @@ import { AuthRoutingModule } from './auth/auth-routing.module';
     BrowserModule,
     AppRoutingModule,
     AdminRoutingModule,
-    AuthRoutingModule
+    // AdminModule,
+  //  AuthModule,
+    AuthRoutingModule,
+    FormsModule,
+    ReactiveFormsModule, 
+    HttpClientModule
   ],
   exports:[NavBarComponent], //components to be used in others module
   providers: [],
