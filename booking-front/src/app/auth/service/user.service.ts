@@ -62,7 +62,7 @@ export class UserService {
       let accessToken = String(localStorage.getItem('accessToken'));
       let decodedToken = jwt.decodeToken(accessToken);
       let roles: string = decodedToken.roles;
-      if (roles.includes('ROLE_MANAGER')) this.adminConnected = true;
+      if (roles.includes('ROLE_MANAGER')) this.managerConnected = true;
     }
     return this.managerConnected;
   }

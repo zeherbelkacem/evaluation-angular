@@ -32,15 +32,9 @@
             <a class="btn text-white" routerLink="/manager">Manager</a>
           </li>
         </ul>
-        <form class="form-inline input-group w-50">
-          <input
-            class="form-control"
-            name="keyWord"
-            type="search"
-            formControlName="keyWord"
-            placeholder="Choose your destination"
-            aria-label="Search"
-          />
+        <form [formGroup]="myForm" (ngSubmit)="onSearch(myForm)" class="form-inline input-group w-50">
+          <input class="form-control" name="keyWord" type="search" formControlName="keyWord"
+            placeholder="Choose your destination" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>
