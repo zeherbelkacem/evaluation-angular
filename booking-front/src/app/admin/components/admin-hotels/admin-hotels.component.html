@@ -1,87 +1,87 @@
 <app-nav-admin></app-nav-admin>
-  <div class="mt-5 container">
-    <div class="card text-center">
-      <div class="card-body">
-        <div class="row g-3">
-          <div class="col-6">
-            <h3></h3>
-          </div>
-          <table class="mt-2 table table-striped table-bordered table-dark">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Address</th>
-                <th>City</th>
-                <th>Stars</th>
-                <th>Avail. rooms</th>
-                <th>DELETE</th>
-                <th>UPDATE</th>
+<div class="mt-5 container">
+  <div class="card text-center">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-6">
+          <h3></h3>
+        </div>
+        <table class="mt-2 table table-striped table-bordered table-dark">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Address</th>
+              <th>City</th>
+              <th>Stars</th>
+              <th>Avail. rooms</th>
+              <th>DELETE</th>
+              <th>UPDATE</th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let hotel of listHotels; let i = index">
+                  <td >{{hotel.id}}</td>
+                  <td >{{hotel.name}}</td>
+                  <td >{{hotel.phone}}</td>
+                  <td >{{hotel.address.address+' '+hotel.address.town}}</td>
+                  <td >{{hotel.city.name}}</td>
+                  <td >{{hotel.star}}</td>
+                  <td >{{availableRooms[i]}}</td>
+                  <td>
+                      <a (click)="onDeleteHotel(hotel)"><i
+                              class="fas fa-trash-alt"></i></a>
+                  </td>
+                  <td>
+                      <a (click)="onUpdateHotel(hotel.id)"><i 
+                          class="fas fa-edit" ></i></a>
+                  </td>
               </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let hotel of listHotels">
-                    <td >{{hotel.id}}</td>
-                    <td >{{hotel.name}}</td>
-                    <td >{{hotel.phone}}</td>
-                    <td >{{hotel.address}}</td>
-                    <td >{{hotel.city.name}}</td>
-                    <td >{{hotel.star}}</td>
-                    <td >{{availableRooms}}</td>
-                    <td>
-                        <a (click)="onDeleteHotel(hotel)"><i
-                                class="fas fa-trash-alt"></i></a>
-                    </td>
-                    <td>
-                        <a (click)="onUpdateHotel(hotel.id)"><i 
-                            class="fas fa-edit" ></i></a>
-                    </td>
-                </tr>
-            </tbody>
-          </table>
-        </div>
-        <div>
-          <nav aria-label="...">
-            <ul class="pagination justify-content-center">
-              <li
-                th:class="${currentPage==0 ? 'page-item disabled' : 'page-item'} "
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <nav aria-label="...">
+          <ul class="pagination justify-content-center">
+            <li
+              th:class="${currentPage==0 ? 'page-item disabled' : 'page-item'} "
+            >
+              <a
+                class="page-link"
+                th:href="@{/admin(page=${currentPage-1}, size=${size}, keyWord=${keyWord} ) }"
+                >Previous</a
               >
-                <a
-                  class="page-link"
-                  th:href="@{/admin(page=${currentPage-1}, size=${size}, keyWord=${keyWord} ) }"
-                  >Previous</a
-                >
-              </li>
-              <li th:each="page,status:${pages}">
-                <a
-                  th:class="${status.index==currentPage?'btn btn-primary':'btn'  }"
-                  th:href="@{ /admin(page=${status.index}, size=${size}, keyWord=${keyWord}) }"
-                  th:text="${status.index }"
-                ></a>
-              </li>
-              <li class="page-item">
-                <a
-                  class="page-link"
-                  th:href="@{ /admin(page=${currentPage+1}, size=${size}, keyWord=${keyWord} )}"
-                  >Next</a
-                >
-              </li>
-              <li class="page-item">
-                <a
-                  class="page-link"
-                  th:href="@{/admin(page=${totalPages-1}, size=${size}, keyWord=${keyWord} )}"
-                  >Last</a
-                >
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="card-footer text-muted">
-          <a class="btn btn-secondary btn-lg" routerLink="/saveHotel"
-            >Add new hotel</a
-          >
-        </div>
+            </li>
+            <li th:each="page,status:${pages}">
+              <a
+                th:class="${status.index==currentPage?'btn btn-primary':'btn'  }"
+                th:href="@{ /admin(page=${status.index}, size=${size}, keyWord=${keyWord}) }"
+                th:text="${status.index }"
+              ></a>
+            </li>
+            <li class="page-item">
+              <a
+                class="page-link"
+                th:href="@{ /admin(page=${currentPage+1}, size=${size}, keyWord=${keyWord} )}"
+                >Next</a
+              >
+            </li>
+            <li class="page-item">
+              <a
+                class="page-link"
+                th:href="@{/admin(page=${totalPages-1}, size=${size}, keyWord=${keyWord} )}"
+                >Last</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="card-footer text-muted">
+        <a class="btn btn-secondary btn-lg" routerLink="/saveHotel"
+          >Add new hotel</a
+        >
       </div>
     </div>
   </div>
+</div>
