@@ -15,15 +15,13 @@ import javax.persistence.Embeddable;
 @Data @NoArgsConstructor @AllArgsConstructor
 @Embeddable
 public class Address {
-
-
     private String address;
 
     private String address2;
 
     private String codeZip;
 
-    private String city;
+    private String town;
 
     private String country;
 

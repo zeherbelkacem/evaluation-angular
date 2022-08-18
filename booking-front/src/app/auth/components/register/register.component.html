@@ -1,1 +1,28 @@
-<p>register works!</p>
+<app-nav-bar></app-nav-bar>
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card text-center col-6 justify-content-center">
+        <div class="card-header">
+            <h5 class="card-title">Registration</h5>
+        </div>
+        <div class="card-body">
+
+            <form [formGroup]="myUserForm" (ngSubmit)="onSaveUser(myUserForm)">
+                <div class="form-group mb-3">
+                    <label class="control-label">Username</label>
+                    <input type="text" class="form-control" formControlName="username" >
+       
+                </div>
+                <div class="form-group mb-3">
+                    <label class="control-label">Password</label>
+                    <input type="text" class="form-control" formControlName="password" >
+                  
+                </div>
+                
+
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+
+        </div>
+    </div>
+</div>

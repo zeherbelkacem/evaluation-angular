@@ -22,6 +22,8 @@ public interface AuthService {
      */
     public Uuser saveUuser(Uuser user);
 
+    public Uuser registerUuser(Uuser user);
+
     /*******Rrole*******************************/
 
     /**
@@ -41,6 +43,9 @@ public interface AuthService {
     public List<Uuser>  getAllUsers();
 
     public Uuser addRoleToUser(String user, String role);
+
+    public List<Uuser> findUsersByRoleName(String role);
+
 
 
 }

@@ -3,6 +3,7 @@ package com.fms.booking.security.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fms.booking.entities.Customer;
+import com.fms.booking.entities.Hotel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,9 @@ public class Uuser {
     @JsonIgnore
     private List<Customer> customers;
 
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Hotel> hotels;
     @Override
     public String toString() {
         return "Uuser [userId=" + userId + ", userName=" + userName + ", password=" + password + ", active=" + active

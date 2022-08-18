@@ -5,7 +5,10 @@
 export const environment = {
   production: false,
   hostCity : "http://localhost:8086/booking/city",
-  hostHotel: "http://localhost:8086/booking/hotel"
+  hostHotel: "http://localhost:8086/booking/hotel",
+  hostUser: "http://localhost:8086/booking/auth",
+  hostRoom: "http://localhost:8086/booking/room",
+  hostAuth: "http://localhost:8086/booking/login"
 };
 
 /*

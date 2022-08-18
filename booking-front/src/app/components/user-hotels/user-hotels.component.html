@@ -1,1 +1,44 @@
-<p class="mt-5">user-hotels works!</p>
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-4 g-2 mt-5">
+    <div
+      class="col mb-5 d-flex justify-content-center"
+      *ngFor="let h of listHotels; let i = index"
+    >
+      <div class="card">
+        <div *ngIf="imageOfHotel">
+          <div *ngFor="let img of imageOfHotel[i]; let j = index">
+            <img [src]="img" class="card-img-top" alt="..." />
+          </div>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item h3">{{ h.name }}</li>
+            <li class="list-group-item" th:text="'Name : '">
+              {{ h.city.name }}
+            </li>
+            <ul class="list-group list-group-horizontal-sm" > Stars: 
+              <li class="list-group mt-1" *ngFor="let in of counter(h.star); let i = index">
+                 <i class="fas fa-star"></i>
+              </li>
+            </ul>
+            <li class="list-group-item">
+              PHONE :{{ h.phone }}
+            </li>
+          </ul>
+        </div>
+        <div class="card-body">
+          <div class="card-body d-flex justify-content-between">
+            <a class="btn bg-success" (click)="onSelectHotel(h.id)">SELECT</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer text-muted d-flex justify-content-center">
+    <!-- <div>
+      <a routerLink="/saveMovie" class="btn btn-primary btn-lg"
+        >TODO: pa</a
+      >
+    </div> -->
+  </div>
+</div>

@@ -34,6 +34,11 @@ public class AuthRestController {
         return new ResponseEntity<Uuser>(authService.saveUuser(uuser), HttpStatus.OK);
     }
 
+    @PostMapping("/registerUser")
+    public ResponseEntity<Uuser> registerUser(@RequestBody Uuser uuser) {
+        return new ResponseEntity<Uuser>(authService.registerUuser(uuser), HttpStatus.OK);
+    }
+
     @PostMapping("/saveRole")
     public ResponseEntity<Rrole> saveRole(@RequestBody Rrole rrole) {
         return new ResponseEntity<Rrole>(authService.saveRrole(rrole), HttpStatus.OK);
@@ -47,6 +52,11 @@ public class AuthRestController {
     @GetMapping("/all")
     public ResponseEntity<List<Uuser>> getAllUsers() {
         return new ResponseEntity<List<Uuser>>(authService.getAllUsers(), HttpStatus.OK);
+    }
+
+    @GetMapping("/usersByRole/{role}")
+    public ResponseEntity<List<Uuser>> getAllUsersByRole(@PathVariable("role") String role) {
+        return new ResponseEntity<List<Uuser>>(authService.findUsersByRoleName(role), HttpStatus.OK);
     }
     @PostMapping("/authenticate")
     public  ResponseEntity<HttpServletResponse> authenticate(@RequestBody HttpServletRequest request){

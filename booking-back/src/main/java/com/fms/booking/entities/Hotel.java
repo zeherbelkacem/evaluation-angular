@@ -1,5 +1,7 @@
 package com.fms.booking.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fms.booking.security.entities.Uuser;
 import com.fms.booking.utils.Address;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,11 +34,15 @@ public class Hotel implements Serializable {
     private int star;
 
     @OneToMany(mappedBy = "hotel")
+    @JsonIgnore
     private List<Room> rooms = new ArrayList<>();
 
     @ManyToOne()
     private City city;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany()
     private List<Image> images = new ArrayList<Image>();
+
+    @ManyToOne()
+    private Uuser user;
 }

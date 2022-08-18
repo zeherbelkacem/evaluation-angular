@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -51,6 +52,14 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    public Uuser registerUuser(Uuser user) {
+        String pwdEncoder = passwordEncoder.encode(user.getPassword());
+        user.setPassword(pwdEncoder);
+        user.getRoles().add(rroleRepository.findByRole(("USER")));
+        return uuserRepository.save(user);
+    }
+
+    @Override
     public Rrole saveRrole(Rrole role) {
         return rroleRepository.save(role);
     }
@@ -72,6 +81,18 @@ public class AuthServiceImpl implements AuthService {
         return uuserRepository.save(uuser);
     }
 
+    @Override
+    public List<Uuser> findUsersByRoleName(String role) {
+        List<Uuser> uusers = uuserRepository.findAll();
+        List<Uuser> uusers1 = new ArrayList<>();
+        uusers.forEach(u->{
+                u.getRoles().forEach(r->{
+                    if (r.getRole().equalsIgnoreCase(role))
+                        uusers1.add(u);
+                });
+        });
+        return uusers1;
+    }
 
 
 }

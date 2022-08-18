@@ -10,6 +10,8 @@ import { SupervisorsComponent } from './components/supervisors/supervisors.compo
 import { BookingsComponent } from './components/bookings/bookings.component';
 import { SaveCityComponent } from './components/save-city/save-city.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminHotelsComponent } from './components/admin-hotels/admin-hotels.component';
+import { SaveHotelComponent } from './components/save-hotel/save-hotel.component';
 
 
 
@@ -20,7 +22,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     UsersComponent,
     SupervisorsComponent,
     BookingsComponent,
-    SaveCityComponent
+    SaveCityComponent,
+    AdminHotelsComponent,
+    SaveHotelComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +32,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppModule,
     FormsModule,
     ReactiveFormsModule,
-  ]
+  ], 
 })
 export class AdminModule { }

@@ -1,12 +1,21 @@
 package com.fms.booking.restController;
 
 import com.fms.booking.entities.City;
+import com.fms.booking.entities.Hotel;
+import com.fms.booking.entities.Image;
 import com.fms.booking.service.CityServiceImpl;
 import com.fms.booking.service.HotelService;
+import com.fms.booking.service.ImageService;
+import com.fms.booking.utils.ImageUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("*")
@@ -16,18 +25,51 @@ public class HotelRestController {
 
     @Autowired
     private HotelService hotelService;
+    @Autowired
+    private ImageService imageService;
+
+    @PostMapping(value = {"/save"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
+    public Hotel saveTraining(@RequestPart("hotel") Hotel hotel, @RequestPart("imageFile") MultipartFile files[])
+            throws IOException {
+        System.out.println(hotel);
+        List<Image> imgs = new ArrayList<>();
+        for (int i=0; i<files.length; i++){
+            System.out.println(files[i].getName());
+            Image image = imageService.saveImage(Image.builder()
+                    .name(files[i].getOriginalFilename())
+                    .type(files[i].getContentType())
+                    .image(ImageUtility.compressImage(files[i].getBytes())).build());
+            imgs.add(image);
+        }
+        hotel.setImages(imgs);
+        return hotelService.saveHotel(hotel);
+
+    }
 
     /**
-     * Add a new city
      *
-     * @param city
+     * @return
      */
-    @PostMapping("/save")
-    @ResponseStatus(HttpStatus.CREATED)
-    public City add(@RequestBody City city) {
+    @GetMapping("/all")
+    public @ResponseBody ResponseEntity<List<Hotel>> getAllHotels() {
+        return new ResponseEntity<>(hotelService.getAllHotels(), HttpStatus.OK);
+    }
 
-        //return  cityService.add(city);
-        return null;
+    /**
+     *
+     * @param cityName
+     * @return
+     */
+    @GetMapping(value = "/byCity/{cityName}")
+    public @ResponseBody ResponseEntity<List<Hotel>> getHotelsByCategoryName(@PathVariable String cityName) {
+
+        return new ResponseEntity<List<Hotel>>(hotelService.findByCityNameContains(cityName), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/byUser/{userName}")
+    public @ResponseBody ResponseEntity<List<Hotel>> getHotelsByUser(@PathVariable String userName) {
+
+        return new ResponseEntity<List<Hotel>>(hotelService.findByUserUserName(userName), HttpStatus.OK);
     }
 
     /**
@@ -71,7 +113,7 @@ public class HotelRestController {
      * Return list of all cities
      * @return
      */
-    @GetMapping("/all")
+    @GetMapping("/alll")
     public List<City> getAll() {
         return null;
 //        return cityService.getAll();

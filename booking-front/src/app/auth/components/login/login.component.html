@@ -1,1 +1,36 @@
-<p>login works!</p>
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card text-center col-6 justify-content-center">
+        <div class="card-header">
+            <h5 class="card-title">Authentication</h5>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="authForm" (ngSubmit)="authenticate(authForm)">
+                <div class="form-group mb-3">
+                    <label class="control-label">Username</label>
+                    <input type="text" class="form-control" formControlName="username" placeholder="username" >
+                </div>
+                <div class="form-group mb-3">
+                    <label class="control-label">Password</label>
+                    <input type="password" class="form-control" formControlName="password" placeholder="password" >
+                </div>
+                <!-- <button type="submit" class="btn btn-primary">Save</button> -->
+            
+        
+        <div class="card-footer row gx-1">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+            <div class="col">
+                <a routerLink="/createCustomer">Create an account</a>
+            </div>
+            <div class="col">
+              <a routerLink="#">Forgot password?</a>
+          </div>
+            
+        </div>
+    </form>
+    </div>
+    </div>
+</div>
+
+

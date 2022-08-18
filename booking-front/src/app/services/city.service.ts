@@ -9,14 +9,7 @@ import { City } from '../models/city';
 })
 export class CityService {
 
-   /*First solution
-  */
-   private CityName$ = new BehaviorSubject<string>("");
-   selectedCityName$ = this.CityName$.asObservable();
- 
-   setCityName(CityName: string) {
-     this.CityName$.next(CityName);
-   }
+  
 
   constructor(private http: HttpClient) { }
 

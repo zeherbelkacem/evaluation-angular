@@ -1,0 +1,100 @@
+<div class="mt-5 row d-flex justify-content-center">
+  <div class="card text-center col-md-6">
+    <div class="card-header">
+      <h5 class="card-title">Add new movie</h5>
+    </div>
+    <div class="card-body">
+      <!-- {{ hotelForm.value | json }} -->
+      <form [formGroup]="hotelForm" (ngSubmit)="onSaveHotel(hotelForm)">
+        <div class="form-group mb-3">
+          <label class="control-label">Name</label>
+          <input type="text" class="form-control" formControlName="name" />
+        </div>
+        <div class="form-group mb-3">
+          <label class="control-label">Phone</label>
+          <input type="text" class="form-control" formControlName="phone" />
+        </div>
+        <div class="bg-secondary">
+          <div class="form-group mb-3">
+            <label class="control-label">Address</label>
+            <input type="text" class="form-control" formControlName="address" />
+          </div>
+          <div class="form-group mb-3">
+            <label class="control-label">Address2</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="address2"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label class="control-label">Code zip</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="codeZip"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label class="control-label">Department city</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="town"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label class="control-label">country</label>
+            <input type="text" class="form-control" formControlName="country" />
+          </div>
+        </div>
+        <div class="form-group mb-3">
+          <label class="control-label">Stars</label>
+          <input
+            type="number"
+            min="1"
+            max="5"
+            class="form-control"
+            formControlName="star"
+          />
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="control-label">Associated City </label>
+          <select formControlName="city" class="form-control mb-3">
+            <option *ngFor="let c of listCities" [ngValue]="c">
+              {{ c.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group mb-3">
+          <label class="control-label">Associated Manager </label>
+          <select formControlName="manager" class="form-control mb-3">
+            <option *ngFor="let m of listManagers" [ngValue]="m">
+              {{ m.userName }}
+            </option>
+          </select>
+        </div>
+
+        <div class="mb-5">
+          <div class="form-group">
+            <input
+              type="file"
+              multiple
+              value="select"
+              #selectFile
+              (change)="onImageUpload($event)"
+            />
+            <!-- <input type="button" (click)="imageUploadAction()" value="Upload Image" class="btn1"> -->
+          </div>
+          <div *ngFor="let file of hotelToAdd.images">
+            <div class="bg-secondary mt-2"><img [src]="file.url" /></div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>

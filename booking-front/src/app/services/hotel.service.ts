@@ -25,9 +25,43 @@ export class HotelService {
     );
   }
 
+  /**
+   * 
+   * @returns 
+   */
   getAllHotels(): Observable<Hotel[]> {
     return this.http.get<Hotel[]>(
       environment.hostHotel + '/all/'
     );
+  }
+
+ /**
+  * 
+  * @param hotelFormData 
+  * @returns 
+  */
+  saveHotel(hotelFormData: FormData):Observable<Hotel> {
+
+    return this.http.post<Hotel>(environment.hostHotel + '/save', hotelFormData);
+  }
+
+  /**
+   * 
+   * @param userName 
+   * @returns 
+   */
+  getMyHotels(userName: string): Observable<Hotel[]> {
+    return this.http.get<Hotel[]>(
+      environment.hostHotel + '/byUser/'+userName
+    );
+  }
+
+  /**
+   * 
+   * @param i 
+   * @returns 
+   */
+  counter(i: number) {
+    return new Array(i);
   }
 }
