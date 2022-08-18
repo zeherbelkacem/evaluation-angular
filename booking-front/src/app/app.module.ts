@@ -16,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { AdminModule } from './admin/admin.module';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShowRoomsComponent } from './components/show-rooms/show-rooms.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NavBarComponent,
     HomeComponent,
     CitiesNavBarComponent,
-    UserHotelsComponent
+    UserHotelsComponent,
+    ShowRoomsComponent
   ],
   imports: [
     BrowserModule,

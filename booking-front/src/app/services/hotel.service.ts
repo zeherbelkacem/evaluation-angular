@@ -3,11 +3,13 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Hotel } from '../models/hotel';
+import { Room } from '../models/room';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HotelService {
+ 
 
    /*First solution
   */
@@ -22,6 +24,12 @@ export class HotelService {
   getHotelByCityName(city: string): Observable<Hotel[]> {
     return this.http.get<Hotel[]>(
       environment.hostHotel + '/byCity/' + city
+    );
+  }
+
+  getRoomsOfHotels(id: number):Observable<Room[]> {
+    return this.http.get<Room[]>(
+      environment.hostHotel + '/hotelRooms/' + id
     );
   }
 

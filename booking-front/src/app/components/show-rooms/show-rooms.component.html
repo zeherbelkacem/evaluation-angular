@@ -1,0 +1,43 @@
+<app-nav-bar></app-nav-bar>
+<app-cities-nav-bar></app-cities-nav-bar>
+<div class="mt-5 container">
+    <div class="card text-center">
+      <div class="card-body">
+        <div class="row g-3">
+          <div class="col-6">
+            <h3></h3>
+          </div>
+          <table class="mt-2 table table-striped table-bordered table-dark">
+            <thead>
+              <tr>
+                
+                <th>AVAILABLE</th>
+                <th>PRICE</th>
+                <th>CATEGORY</th>
+                <th>ASSOCIATED HOTEL</th>
+                <th>Booking</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let room of listRooms">
+                    <td >{{room.available}}</td>
+                    <td >{{room.price}}</td>
+                    <td >{{room.category.name}}</td>
+                    <td >{{room.hotel.name}}</td>
+                    <td><a class="btn btn-secondary btn-lg" routerLink="/"
+                        >Book?</a
+                      ></td>
+                    
+                </tr>
+            </tbody>
+          </table>
+        </div>
+       
+        <div class="card-footer text-muted">
+          <!-- <a class="btn btn-secondary btn-lg" routerLink="/saveRoom"
+            >Book?</a
+          > -->
+        </div>
+      </div>
+    </div>
+  

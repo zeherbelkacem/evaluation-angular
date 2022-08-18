@@ -3,6 +3,7 @@ package com.fms.booking.restController;
 import com.fms.booking.entities.City;
 import com.fms.booking.entities.Hotel;
 import com.fms.booking.entities.Image;
+import com.fms.booking.entities.Room;
 import com.fms.booking.service.CityServiceImpl;
 import com.fms.booking.service.HotelService;
 import com.fms.booking.service.ImageService;
@@ -54,6 +55,12 @@ public class HotelRestController {
     public @ResponseBody ResponseEntity<List<Hotel>> getAllHotels() {
         return new ResponseEntity<>(hotelService.getAllHotels(), HttpStatus.OK);
     }
+
+    @GetMapping("/hotelRooms/{id}")
+    public @ResponseBody ResponseEntity<List<Room>> getAllHotelRooms(@PathVariable long id) {
+        return new ResponseEntity<>(hotelService.getAllHotelRooms(id), HttpStatus.OK);
+    }
+
 
     /**
      *

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Hotel } from 'src/app/models/hotel';
+import { Room } from 'src/app/models/room';
+import { RoomService } from 'src/app/service/room.service';
 import { HotelService } from 'src/app/services/hotel.service';
 import { ImageService } from 'src/app/services/image.service';
 
@@ -12,9 +15,12 @@ export class UserHotelsComponent implements OnInit {
   listHotels: Hotel[] | null = null;
   imageOfHotel!: string[][];
   postResponse: any;
+  listRooms: Room[] | null = null;
 
   selectedCityName: string = '';
   constructor(
+    private roomService: RoomService,
+    private router: Router,
     private hotelService: HotelService,
     private imageService: ImageService
   ) {}
@@ -84,7 +90,11 @@ export class UserHotelsComponent implements OnInit {
   }
 
   showThisHotelsRooms(id: number){
-
+      this.hotelService.getRoomsOfHotels(id).subscribe(rooms=>{
+        this.listRooms = rooms;
+        this.roomService.setHotelRooms(rooms);
+        this.router.navigateByUrl("/showRooms")
+      })
   }
 
   

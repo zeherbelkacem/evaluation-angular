@@ -10,6 +10,9 @@ import { Room } from '../models/room';
 })
 export class RoomService {
 
+  listRooms: Room[] | null = null;
+  
+
   constructor(private http: HttpClient) { }
 
   /**
@@ -20,6 +23,12 @@ export class RoomService {
     return this.http.get<Category[]>(environment.hostRoom+'/allCategories');
   }
 
+  setHotelRooms(rooms: Room[]) {
+    this.listRooms = rooms;
+  }
+  getHotelRooms() {
+    return this.listRooms;
+  }
   /**
    * 
    * @returns 
