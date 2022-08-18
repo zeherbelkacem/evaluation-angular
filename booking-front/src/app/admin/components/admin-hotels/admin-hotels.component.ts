@@ -9,17 +9,21 @@ import { HotelService } from 'src/app/services/hotel.service';
 })
 export class AdminHotelsComponent implements OnInit {
   listHotels: Hotel[] |null= null;
-  availableRooms!: any[] ;
+  availableRooms: any[]=[] ;
   constructor(private hotelService: HotelService) { }
 
   ngOnInit(): void {
     this.hotelService.getAllHotels().subscribe(hotels=>{
       this.listHotels=hotels;
       let arr: any[]= []
-      for(let i=0; i<hotels.length; i++){
-        arr.push(JSON.parse(JSON.stringify((hotels[i])))['rooms'].length)
-      }
-      this.availableRooms=arr 
+      // console.log(hotels);
+      // console.log(JSON.parse(JSON.stringify((hotels[0])))['rooms']);
+      // for(let i=0; i<hotels.length; i++){
+        
+        
+      //   arr.push(JSON.parse(JSON.stringify((hotels[i])))['rooms'].length)
+      // }
+      // this.availableRooms=arr 
     })
   }
 

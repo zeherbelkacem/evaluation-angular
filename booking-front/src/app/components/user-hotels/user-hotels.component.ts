@@ -83,5 +83,9 @@ export class UserHotelsComponent implements OnInit {
     return new Array(i);
   }
 
+  showThisHotelsRooms(id: number){
+
+  }
+
   
 }

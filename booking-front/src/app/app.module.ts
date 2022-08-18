@@ -15,6 +15,7 @@ import { ManagerModule } from './manager/manager.module';
 import { AuthModule } from './auth/auth.module';
 import { AdminRoutingModule } from './admin/admin-routing.module';
 import { AdminModule } from './admin/admin.module';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { AdminModule } from './admin/admin.module';
     FormsModule,
     ReactiveFormsModule, 
     HttpClientModule,
+    NgbCarouselModule,
+    NgbModule
     
   ],
   exports:[NavBarComponent], //components to be used in others module

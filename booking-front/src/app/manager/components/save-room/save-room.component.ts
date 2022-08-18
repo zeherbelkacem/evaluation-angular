@@ -23,12 +23,12 @@ export class SaveRoomComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.hotelService.getMyHotels("ilyas").subscribe(data=>{
-      this.listHotels =data;
-    })
-    this.roomService.getAllCategories().subscribe(data=>{
+    this.hotelService.getMyHotels('ilyas').subscribe((data) => {
+      this.listHotels = data;
+    });
+    this.roomService.getAllCategories().subscribe((data) => {
       this.listCategories = data;
-    })
+    });
     this.roomForm = this.fb.group({
       id: [0],
       quantity: [1],
@@ -39,9 +39,11 @@ export class SaveRoomComponent implements OnInit {
     });
   }
   onSaveRoom(form: FormGroup) {
-    this.roomService.saveRoom(form.value).subscribe(savedRoom=>{
+    this.roomService.saveRoom(form.value).subscribe((savedRoom) => {
       console.log(savedRoom);
-    })
-    this.router.navigateByUrl("/manageRooms")
+    });
+    this.router.navigate(['/manageRooms']).then(() => {
+      window.location.reload();
+    });
   }
 }

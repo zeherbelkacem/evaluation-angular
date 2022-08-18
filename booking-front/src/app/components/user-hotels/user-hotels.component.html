@@ -1,5 +1,52 @@
-<div class="container">
-  <div class="row row-cols-1 row-cols-md-4 g-2 mt-5">
+<div class="container mt-5">
+
+  <ngb-carousel>
+    <ng-template ngbSlide *ngFor="let h of listHotels; let i = index">
+      <svg
+        class="bd-placeholder-img bd-placeholder-img-lg d-block w-100"
+        width="800"
+        height="430"
+        xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Placeholder: First slide"
+        preserveAspectRatio="xMidYMid slice"
+        focusable="false"
+      >
+        <title>Placeholder</title>
+        <rect width="100%" height="100%" fill="#777"></rect>
+        <text x="50%" y="50%" fill="#555" dy=".3em"></text>
+      </svg>
+
+      <div class="carousel-caption">
+        <div
+          class="picsum-img-wrapper"
+          *ngFor="let img of imageOfHotel[i]; let j = index"
+        >
+          <li class="list-group-item h5 text-dark" th:text="'Name : '">
+            Destination
+            {{ h.city.name }}
+          </li>
+      
+            <img [src]="img" alt="Random first slide"  class="btn"  (click)="showThisHotelsRooms(h.id)"/>
+           
+         
+        </div>
+
+        <h3>{{ h.name }}</h3>
+
+        <ul class="list-group list-group-horizontal-sm justify-content-center">
+          <li
+            class="list-group mt-1 mb-1"
+            *ngFor="let in of counter(h.star); let i = index"
+          >
+            <i class="fas fa-star"></i>
+          </li>
+        </ul>
+        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <!-- <div class="row row-cols-1 row-cols-md-4 g-2 mt-5">
     <div
       class="col mb-5 d-flex justify-content-center"
       *ngFor="let h of listHotels; let i = index"
@@ -33,7 +80,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="card-footer text-muted d-flex justify-content-center">
     <!-- <div>
       <a routerLink="/saveMovie" class="btn btn-primary btn-lg"
