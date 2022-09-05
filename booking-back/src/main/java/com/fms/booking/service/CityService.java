@@ -13,4 +13,6 @@ public interface CityService {
     public void delete(long id);
 
     public List<City> getAll();
+
+    City findByName(String name);
 }

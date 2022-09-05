@@ -1,6 +1,7 @@
 package com.fms.booking.restController;
 
 import com.fms.booking.entities.City;
+import com.fms.booking.exceptions.EntityAlreadyExistsException;
 import com.fms.booking.service.CityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,11 @@ public class CityRestController {
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
     public City add(@RequestBody City city) {
-      return  cityService.add(city);
+        City c = cityService.findByName(city.getName());
+        if (c != null) {
+            throw new EntityAlreadyExistsException("A city with the sane name <<" + city.getName() + ">> is already exists");
+        }
+        return cityService.add(city);
     }
 
     /**
@@ -64,6 +69,7 @@ public class CityRestController {
 
     /**
      * Return list of all cities
+     *
      * @return
      */
     @GetMapping("/all")
