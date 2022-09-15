@@ -17,6 +17,10 @@ import { AdminRoutingModule } from './admin/admin-routing.module';
 import { AdminModule } from './admin/admin.module';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ShowRoomsComponent } from './components/show-rooms/show-rooms.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -37,8 +41,11 @@ import { ShowRoomsComponent } from './components/show-rooms/show-rooms.component
     ReactiveFormsModule, 
     HttpClientModule,
     NgbCarouselModule,
-    NgbModule
-    
+    NgbModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatDialogModule
   ],
   exports:[NavBarComponent], //components to be used in others module
   providers: [],
